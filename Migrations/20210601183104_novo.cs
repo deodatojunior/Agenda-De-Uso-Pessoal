@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjetoIntegrador.Migrations
 {
-    public partial class abc : Migration
+    public partial class novo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Anotacao",
+                name: "Anotacoes",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
@@ -18,7 +18,7 @@ namespace ProjetoIntegrador.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Anotacao", x => x.id);
+                    table.PrimaryKey("PK_Anotacoes", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -52,23 +52,23 @@ namespace ProjetoIntegrador.Migrations
             migrationBuilder.InsertData(
                 table: "Lembretes",
                 columns: new[] { "id", "data", "texto" },
-                values: new object[] { 1, new DateTime(2021, 6, 1, 13, 41, 28, 584, DateTimeKind.Local).AddTicks(2328), "Hoje foi um belo dia, espero que amanhã seja melhor!" });
+                values: new object[] { 1, new DateTime(2021, 6, 1, 14, 31, 3, 452, DateTimeKind.Local).AddTicks(2658), "Hoje foi um belo dia, espero que amanhã seja melhor!" });
 
             migrationBuilder.InsertData(
                 table: "Lembretes",
                 columns: new[] { "id", "data", "texto" },
-                values: new object[] { 2, new DateTime(2021, 6, 1, 13, 41, 28, 586, DateTimeKind.Local).AddTicks(2315), "Hoje foi um dia comum, espero que amanhã seja melhor!" });
+                values: new object[] { 2, new DateTime(2021, 6, 1, 14, 31, 3, 454, DateTimeKind.Local).AddTicks(4236), "Hoje foi um dia comum, espero que amanhã seja melhor!" });
 
             migrationBuilder.InsertData(
                 table: "Lembretes",
                 columns: new[] { "id", "data", "texto" },
-                values: new object[] { 3, new DateTime(2021, 6, 1, 13, 41, 28, 586, DateTimeKind.Local).AddTicks(2376), "Hoje foi um péssimo dia, espero que amanhã seja melhor!" });
+                values: new object[] { 3, new DateTime(2021, 6, 1, 14, 31, 3, 454, DateTimeKind.Local).AddTicks(4305), "Hoje foi um péssimo dia, espero que amanhã seja melhor!" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Anotacao");
+                name: "Anotacoes");
 
             migrationBuilder.DropTable(
                 name: "Eventos");

@@ -22,7 +22,7 @@ namespace ProjetoIntegrador.Controllers
         // GET: Anotacoes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Anotacao.ToListAsync());
+            return View(await _context.Anotacoes.ToListAsync());
         }
 
         // GET: Anotacoes/Details/5
@@ -33,7 +33,7 @@ namespace ProjetoIntegrador.Controllers
                 return NotFound();
             }
 
-            var anotacao = await _context.Anotacao
+            var anotacao = await _context.Anotacoes
                 .FirstOrDefaultAsync(m => m.id == id);
             if (anotacao == null)
             {
@@ -73,7 +73,7 @@ namespace ProjetoIntegrador.Controllers
                 return NotFound();
             }
 
-            var anotacao = await _context.Anotacao.FindAsync(id);
+            var anotacao = await _context.Anotacoes.FindAsync(id);
             if (anotacao == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace ProjetoIntegrador.Controllers
                 return NotFound();
             }
 
-            var anotacao = await _context.Anotacao
+            var anotacao = await _context.Anotacoes
                 .FirstOrDefaultAsync(m => m.id == id);
             if (anotacao == null)
             {
@@ -139,15 +139,15 @@ namespace ProjetoIntegrador.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var anotacao = await _context.Anotacao.FindAsync(id);
-            _context.Anotacao.Remove(anotacao);
+            var anotacao = await _context.Anotacoes.FindAsync(id);
+            _context.Anotacoes.Remove(anotacao);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AnotacaoExists(int id)
         {
-            return _context.Anotacao.Any(e => e.id == id);
+            return _context.Anotacoes.Any(e => e.id == id);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace ProjetoIntegrador.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Anotacao");
+                    b.ToTable("Anotacoes");
                 });
 
             modelBuilder.Entity("ProjetoIntegrador.Models.Evento", b =>
@@ -70,19 +70,19 @@ namespace ProjetoIntegrador.Migrations
                         new
                         {
                             id = 1,
-                            data = new DateTime(2021, 6, 1, 13, 41, 28, 584, DateTimeKind.Local).AddTicks(2328),
+                            data = new DateTime(2021, 6, 1, 14, 31, 3, 452, DateTimeKind.Local).AddTicks(2658),
                             texto = "Hoje foi um belo dia, espero que amanhã seja melhor!"
                         },
                         new
                         {
                             id = 2,
-                            data = new DateTime(2021, 6, 1, 13, 41, 28, 586, DateTimeKind.Local).AddTicks(2315),
+                            data = new DateTime(2021, 6, 1, 14, 31, 3, 454, DateTimeKind.Local).AddTicks(4236),
                             texto = "Hoje foi um dia comum, espero que amanhã seja melhor!"
                         },
                         new
                         {
                             id = 3,
-                            data = new DateTime(2021, 6, 1, 13, 41, 28, 586, DateTimeKind.Local).AddTicks(2376),
+                            data = new DateTime(2021, 6, 1, 14, 31, 3, 454, DateTimeKind.Local).AddTicks(4305),
                             texto = "Hoje foi um péssimo dia, espero que amanhã seja melhor!"
                         });
                 });

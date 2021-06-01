@@ -17,6 +17,8 @@ namespace ProjetoIntegrador.Database
         public DbSet<Lembrete> Lembretes { get; set; }
         public DbSet<Evento> Eventos { get; set; }
 
+        public DbSet<Anotacao> Anotacoes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             
@@ -40,7 +42,6 @@ namespace ProjetoIntegrador.Database
                 new Lembrete { id = 3, data = DateTime.Now, texto = "Hoje foi um péssimo dia, espero que amanhã seja melhor!" });
         }
 
-        public DbSet<ProjetoIntegrador.Models.Anotacao> Anotacao { get; set; }
 
         
     }
