@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ProjetoIntegrador.Models.Evento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Página de eventos</h1>
+
+<p>
+    <a asp-action="Create">Criar novo evento</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Descrição do evento
+            </th>
+            <th>
+                Data do evento
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data_evento)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Editar evento</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Ver evento</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Deletar evento</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

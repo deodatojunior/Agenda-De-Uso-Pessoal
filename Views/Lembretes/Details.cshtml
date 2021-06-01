@@ -1,0 +1,29 @@
+﻿@model ProjetoIntegrador.Models.Lembrete
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes do lembrete</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Data do lembrete
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.data)
+        </dd>
+        <dt class = "col-sm-2">
+            Texto do lembrete
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.texto)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Editar</a> |
+    <a asp-action="Index">Voltar a listagem de lembretes</a>
+</div>

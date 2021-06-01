@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ProjetoIntegrador.Models.Lembrete>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Página do lembrete</h1>
+
+<p>
+    <a asp-action="Create">Criar novo lembrete</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Data do lembrete
+            </th>
+            <th>
+               Texto do lembrete
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.texto)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Editar lembrete</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Ver lembrete</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Deletar lembrete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
