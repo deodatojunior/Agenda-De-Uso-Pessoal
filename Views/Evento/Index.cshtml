@@ -18,6 +18,7 @@
             <th>
                 Data do evento
             </th>
+
             <th></th>
         </tr>
     </thead>
@@ -30,10 +31,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.data_evento)
             </td>
+
+
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Editar evento</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Ver evento</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Deletar evento</a>
+                <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Remover</a> |
+                <a asp-controller="Anotacao_Evento" asp-action="Create" asp-area="">Criar anotação para eventos</a>
             </td>
         </tr>
 }

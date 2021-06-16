@@ -64,7 +64,7 @@ namespace ProjetoIntegrador
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Lembretes}/{action=Index}/{id?}");
+                    pattern: "{controller=Lembrete}/{action=Index}/{id?}");
             });
         }
     }

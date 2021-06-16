@@ -9,8 +9,8 @@ using ProjetoIntegrador.Database;
 namespace ProjetoIntegrador.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210601183104_novo")]
-    partial class novo
+    [Migration("20210616025844_primeiro")]
+    partial class primeiro
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace ProjetoIntegrador.Migrations
                 .HasAnnotation("ProductVersion", "3.1.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("ProjetoIntegrador.Models.Anotacao", b =>
+            modelBuilder.Entity("ProjetoIntegrador.Models.Anotacao_Evento", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -28,9 +28,33 @@ namespace ProjetoIntegrador.Migrations
                     b.Property<string>("descricao")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int>("eventoId")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
 
-                    b.ToTable("Anotacoes");
+                    b.HasIndex("eventoId");
+
+                    b.ToTable("Anotacao_Evento");
+                });
+
+            modelBuilder.Entity("ProjetoIntegrador.Models.Anotacao_Lembrete", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("descricao")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("lembreteId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("lembreteId");
+
+                    b.ToTable("Anotacao_Lembrete");
                 });
 
             modelBuilder.Entity("ProjetoIntegrador.Models.Evento", b =>
@@ -72,21 +96,39 @@ namespace ProjetoIntegrador.Migrations
                         new
                         {
                             id = 1,
-                            data = new DateTime(2021, 6, 1, 14, 31, 3, 452, DateTimeKind.Local).AddTicks(2658),
+                            data = new DateTime(2021, 6, 15, 22, 58, 43, 943, DateTimeKind.Local).AddTicks(1294),
                             texto = "Hoje foi um belo dia, espero que amanhã seja melhor!"
                         },
                         new
                         {
                             id = 2,
-                            data = new DateTime(2021, 6, 1, 14, 31, 3, 454, DateTimeKind.Local).AddTicks(4236),
+                            data = new DateTime(2021, 6, 15, 22, 58, 43, 945, DateTimeKind.Local).AddTicks(4123),
                             texto = "Hoje foi um dia comum, espero que amanhã seja melhor!"
                         },
                         new
                         {
                             id = 3,
-                            data = new DateTime(2021, 6, 1, 14, 31, 3, 454, DateTimeKind.Local).AddTicks(4305),
+                            data = new DateTime(2021, 6, 15, 22, 58, 43, 945, DateTimeKind.Local).AddTicks(4208),
                             texto = "Hoje foi um péssimo dia, espero que amanhã seja melhor!"
                         });
+                });
+
+            modelBuilder.Entity("ProjetoIntegrador.Models.Anotacao_Evento", b =>
+                {
+                    b.HasOne("ProjetoIntegrador.Models.Evento", "evento")
+                        .WithMany("Anotacoes")
+                        .HasForeignKey("eventoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProjetoIntegrador.Models.Anotacao_Lembrete", b =>
+                {
+                    b.HasOne("ProjetoIntegrador.Models.Lembrete", "lembrete")
+                        .WithMany("Anotacoes")
+                        .HasForeignKey("lembreteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

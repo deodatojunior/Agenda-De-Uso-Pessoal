@@ -7,20 +7,20 @@
 <h1>Detalhes do lembrete</h1>
 
 <div>
-    <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            Data do lembrete
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.data)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.data)
         </dd>
-        <dt class = "col-sm-2">
-            Texto do lembrete
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.texto)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.texto)
         </dd>
+        
     </dl>
 </div>
 <div>

@@ -5,15 +5,11 @@ using System.Threading.Tasks;
 
 namespace ProjetoIntegrador.Models
 {
-    public class Lembrete
+    public class Anotacao_Evento
     {
         public int id { get; set; }
-
-        public DateTime data { get; set; }
-
-        public string texto { get; set; }
-
-        public List<Anotacao_Lembrete> Anotacoes { get; set; }
-        
+        public string descricao { get; set; }
+        public int eventoId { get; set; }
+        public Evento evento { get; set; }
     }
 }

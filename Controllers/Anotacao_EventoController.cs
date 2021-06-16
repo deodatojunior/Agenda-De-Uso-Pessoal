@@ -10,22 +10,23 @@ using ProjetoIntegrador.Models;
 
 namespace ProjetoIntegrador.Controllers
 {
-    public class LembretesController : Controller
+    public class Anotacao_EventoController : Controller
     {
         private readonly Context _context;
 
-        public LembretesController(Context context)
+        public Anotacao_EventoController(Context context)
         {
             _context = context;
         }
 
-        // GET: Lembretes
+        // GET: Anotacao_Evento
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Lembretes.ToListAsync());
+            var context = _context.Anotacao_Evento.Include(a => a.evento);
+            return View(await context.ToListAsync());
         }
 
-        // GET: Lembretes/Details/5
+        // GET: Anotacao_Evento/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,42 @@ namespace ProjetoIntegrador.Controllers
                 return NotFound();
             }
 
-            var lembrete = await _context.Lembretes
+            var anotacao_Evento = await _context.Anotacao_Evento
+                .Include(a => a.evento)
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (lembrete == null)
+            if (anotacao_Evento == null)
             {
                 return NotFound();
             }
 
-            return View(lembrete);
+            return View(anotacao_Evento);
         }
 
-        // GET: Lembretes/Create
+        // GET: Anotacao_Evento/Create
         public IActionResult Create()
         {
+            ViewData["eventoId"] = new SelectList(_context.Eventos, "id", "id");
             return View();
         }
 
-        // POST: Lembretes/Create
+        // POST: Anotacao_Evento/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,data,texto")] Lembrete lembrete)
+        public async Task<IActionResult> Create([Bind("id,descricao,eventoId")] Anotacao_Evento anotacao_Evento)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(lembrete);
+                _context.Add(anotacao_Evento);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(lembrete);
+            ViewData["eventoId"] = new SelectList(_context.Eventos, "id", "id", anotacao_Evento.eventoId);
+            return View(anotacao_Evento);
         }
 
-        // GET: Lembretes/Edit/5
+        // GET: Anotacao_Evento/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +77,23 @@ namespace ProjetoIntegrador.Controllers
                 return NotFound();
             }
 
-            var lembrete = await _context.Lembretes.FindAsync(id);
-            if (lembrete == null)
+            var anotacao_Evento = await _context.Anotacao_Evento.FindAsync(id);
+            if (anotacao_Evento == null)
             {
                 return NotFound();
             }
-            return View(lembrete);
+            ViewData["eventoId"] = new SelectList(_context.Eventos, "id", "id", anotacao_Evento.eventoId);
+            return View(anotacao_Evento);
         }
 
-        // POST: Lembretes/Edit/5
+        // POST: Anotacao_Evento/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,data,texto")] Lembrete lembrete)
+        public async Task<IActionResult> Edit(int id, [Bind("id,descricao,eventoId")] Anotacao_Evento anotacao_Evento)
         {
-            if (id != lembrete.id)
+            if (id != anotacao_Evento.id)
             {
                 return NotFound();
             }
@@ -97,12 +102,12 @@ namespace ProjetoIntegrador.Controllers
             {
                 try
                 {
-                    _context.Update(lembrete);
+                    _context.Update(anotacao_Evento);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LembreteExists(lembrete.id))
+                    if (!Anotacao_EventoExists(anotacao_Evento.id))
                     {
                         return NotFound();
                     }
@@ -113,10 +118,11 @@ namespace ProjetoIntegrador.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(lembrete);
+            ViewData["eventoId"] = new SelectList(_context.Eventos, "id", "id", anotacao_Evento.eventoId);
+            return View(anotacao_Evento);
         }
 
-        // GET: Lembretes/Delete/5
+        // GET: Anotacao_Evento/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +130,31 @@ namespace ProjetoIntegrador.Controllers
                 return NotFound();
             }
 
-            var lembrete = await _context.Lembretes
+            var anotacao_Evento = await _context.Anotacao_Evento
+                .Include(a => a.evento)
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (lembrete == null)
+            if (anotacao_Evento == null)
             {
                 return NotFound();
             }
 
-            return View(lembrete);
+            return View(anotacao_Evento);
         }
 
-        // POST: Lembretes/Delete/5
+        // POST: Anotacao_Evento/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var lembrete = await _context.Lembretes.FindAsync(id);
-            _context.Lembretes.Remove(lembrete);
+            var anotacao_Evento = await _context.Anotacao_Evento.FindAsync(id);
+            _context.Anotacao_Evento.Remove(anotacao_Evento);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool LembreteExists(int id)
+        private bool Anotacao_EventoExists(int id)
         {
-            return _context.Lembretes.Any(e => e.id == id);
+            return _context.Anotacao_Evento.Any(e => e.id == id);
         }
     }
 }

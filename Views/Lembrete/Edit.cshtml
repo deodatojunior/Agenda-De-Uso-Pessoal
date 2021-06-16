@@ -1,28 +1,28 @@
 ﻿@model ProjetoIntegrador.Models.Lembrete
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Criar lembrete</h1>
+<h1>Editar lembrete</h1>
 
-<hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
             <div class="form-group">
                 <label asp-for="data" class="control-label">Data do lembrete</label>
                 <input asp-for="data" class="form-control" />
                 <span asp-validation-for="data" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="texto" class="control-label">Texto do lembrete</label>
+                <label asp-for="texto" class="control-label">Descrição do lembrete</label>
                 <input asp-for="texto" class="form-control" />
                 <span asp-validation-for="texto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Criar" class="btn btn-primary" />
+                <input type="submit" value="Editar" class="btn btn-primary" />
             </div>
         </form>
     </div>

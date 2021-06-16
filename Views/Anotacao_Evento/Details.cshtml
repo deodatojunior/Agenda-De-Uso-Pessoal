@@ -1,19 +1,24 @@
-﻿@model ProjetoIntegrador.Models.Anotacao
+﻿@model ProjetoIntegrador.Models.Anotacao_Evento
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Detalhar anotação</h1>
+<h1>Detalhes da anotação de evento</h1>
 
 <div>
-    <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             Descrição da anotação
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            Código da anotação
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.evento.id)
         </dd>
     </dl>
 </div>

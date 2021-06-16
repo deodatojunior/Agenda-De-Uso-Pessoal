@@ -4,26 +4,27 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Detalhes do evento</h1>
+<h1>Details</h1>
 
 <div>
+    <h4>Evento</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Descrição do evento
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.descricao)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Data do evento
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.data_evento)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Editar evento</a> |
+    <a asp-action="Edit" asp-route-id="@Model.id">Editar</a> |
     <a asp-action="Index">Voltar a listagem de eventos</a>
 </div>

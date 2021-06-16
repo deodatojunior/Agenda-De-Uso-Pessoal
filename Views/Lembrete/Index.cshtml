@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Página do lembrete</h1>
+<h1>Página inicial</h1>
 
 <p>
     <a asp-action="Create">Criar novo lembrete</a>
@@ -16,7 +16,7 @@
                 Data do lembrete
             </th>
             <th>
-               Texto do lembrete
+                Descrição do lembrete
             </th>
             <th></th>
         </tr>
@@ -31,9 +31,10 @@
                 @Html.DisplayFor(modelItem => item.texto)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Editar lembrete</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Ver lembrete</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Deletar lembrete</a>
+                <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Remover</a> |
+                <a asp-controller="Anotacao_Lembrete" asp-action="Create" asp-area="">Criar anotação para lembretes</a>
             </td>
         </tr>
 }
